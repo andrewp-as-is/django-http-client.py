@@ -31,8 +31,10 @@ name|description
 
 name|description
 -|-
-`.get_headers()`|return headers dict
 `.delete_disk_path()`|delete `disk_path` file or dir
+`.get_content()`|return content
+`.get_content_data()`|return content data/json/dict
+`.get_headers()`|return headers dict
 `.get_request_info()`|return `request_info` dict
 
 ### Examples
@@ -64,6 +66,11 @@ with session.request(**kwargs) as response:
         request_info=json.dumps(request_info),
         disk_path=disk_path
     ).save()
+
+for response in Response.objects.all():
+    request_info = response.get_request_info()
+    headers = response.get_headers()
+    response.delete_disk_path()
 ```
 
 `RequestException`

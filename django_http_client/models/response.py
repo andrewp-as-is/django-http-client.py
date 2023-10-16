@@ -34,7 +34,7 @@ class AbstractResponse(HeadersMixin, RequestInfoMixin, models.Model):
             if os.path.exists(disk_path):
                 return open(disk_path).read()
 
-    def get_data(self):
+    def get_content_data(self):
         content = self.get_content()
         if content:
             return json.loads(content)
